@@ -17,6 +17,10 @@
 	no_spin_thrown = TRUE
 	del_on_death = TRUE
 	weather_immunities = list("ash")
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = 1500
+	pressure_resistance = 200
 
 	/// The probability % of us escaping if stuffed into a bag/toolbox/etc
 	var/escape_chance = 10
@@ -182,3 +186,6 @@
 /mob/living/simple_animal/possessed_object/throw_impact(atom/hit_atom, throwingdatum)
 	//Don't call parent here as the mob isn't doing the hitting, technically
 	return possessed_item.throw_impact(hit_atom, throwingdatum)
+
+/mob/living/simple_animal/possessed_object/Process_Spacemove(movement_dir = 0)
+    return TRUE
