@@ -27,8 +27,6 @@
 	component_parts += new /obj/item/stack/sheet/glass(null)
 	RefreshParts()
 
-/obj/machinery/mineral/equipment_vendor/Initialize(mapload)
-	. = ..()
 	prize_list = list()
 	prize_list["Gear"] = list(
 		EQUIPMENT("Advanced Scanner", /obj/item/t_scanner/adv_mining_scanner, 800),
@@ -91,12 +89,13 @@
 		EQUIPMENT("Alien Toy", /obj/item/clothing/mask/facehugger/toy, 300),
 		EQUIPMENT("Cigar", /obj/item/clothing/mask/cigarette/cigar/havana, 150),
 		EQUIPMENT("GAR Meson Scanners", /obj/item/clothing/glasses/meson/gar, 500),
+		EQUIPMENT("Hoverboard", /obj/item/melee/skateboard/hoverboard, 4000), //Cross lava rivers in a discounted style. To buying it in cargo. Still more than jump boots.
+		EQUIPMENT("HRD-MDE Project Box", /obj/item/storage/box/hardmode_box, 3500), //I want miners have to pay a lot to get this, but be set once they do.
 		EQUIPMENT("Laser Pointer", /obj/item/laser_pointer, 300),
 		EQUIPMENT("Luxury Shelter Capsule", /obj/item/survivalcapsule/luxury, 3000),
 		EQUIPMENT("Soap", /obj/item/soap/nanotrasen, 200),
 		EQUIPMENT("Space Cash", /obj/item/stack/spacecash/c200, 2000),
-		EQUIPMENT("Whiskey", /obj/item/reagent_containers/drinks/bottle/whiskey, 100),
-		EQUIPMENT("HRD-MDE Project Box", /obj/item/storage/box/hardmode_box, 3500) //I want miners have to pay a lot to get this, but be set once they do.
+		EQUIPMENT("Whiskey", /obj/item/reagent_containers/drinks/bottle/whiskey, 100)
 	)
 	prize_list["Extra"] = list() // Used in child vendors
 
@@ -312,14 +311,12 @@
 	component_parts += new /obj/item/stack/sheet/glass(null)
 	RefreshParts()
 
-/obj/machinery/mineral/equipment_vendor/golem/Initialize()
-	. = ..()
 	desc += "\nIt seems a few selections have been added."
 	prize_list["Extra"] += list(
 		EQUIPMENT("Extra ID", /obj/item/card/id/golem, 250),
 		EQUIPMENT("Science Backpack", /obj/item/storage/backpack/science, 250),
 		EQUIPMENT("Full Toolbelt", /obj/item/storage/belt/utility/full/multitool, 250),
-		EQUIPMENT("Monkey Cube", /obj/item/food/snacks/monkeycube, 250),
+		EQUIPMENT("Monkey Cube", /obj/item/food/monkeycube, 250),
 		EQUIPMENT("Royal Cape of the Liberator", /obj/item/bedsheet/rd/royal_cape, 500),
 		EQUIPMENT("Grey Slime Extract", /obj/item/slime_extract/grey, 1000),
 		EQUIPMENT("KA Trigger Modification Kit", /obj/item/borg/upgrade/modkit/trigger_guard, 1000),
@@ -343,8 +340,6 @@
 	component_parts += new /obj/item/stack/sheet/glass(null)
 	RefreshParts()
 
-/obj/machinery/mineral/equipment_vendor/labor/Initialize()
-	. = ..()
 	prize_list = list()
 	prize_list["Scum"] += list(
 		EQUIPMENT("Trauma Kit", /obj/item/stack/medical/bruise_pack/advanced, 150),
@@ -355,9 +350,9 @@
 		EQUIPMENT("Medical Marijuana", /obj/item/storage/fancy/cigarettes/cigpack_med, 250),
 		EQUIPMENT("Cigar", /obj/item/clothing/mask/cigarette/cigar/havana, 150),
 		EQUIPMENT("Box of matches", /obj/item/storage/fancy/matches, 50),
-		EQUIPMENT("Cheeseburger", /obj/item/food/snacks/burger/cheese, 150),
-		EQUIPMENT("Big Burger", /obj/item/food/snacks/burger/bigbite, 250),
-		EQUIPMENT("Recycled Prisoner", /obj/item/food/snacks/soylentgreen, 500),
+		EQUIPMENT("Cheeseburger", /obj/item/food/burger/cheese, 150),
+		EQUIPMENT("Big Burger", /obj/item/food/burger/bigbite, 250),
+		EQUIPMENT("Recycled Prisoner", /obj/item/food/soylentgreen, 500),
 		EQUIPMENT("Crayons", /obj/item/storage/fancy/crayons, 350),
 		EQUIPMENT("Plushie", /obj/random/plushie, 750),
 		EQUIPMENT("Dnd set", /obj/item/storage/box/characters, 500),
@@ -387,8 +382,6 @@
 	component_parts += new /obj/item/stack/sheet/glass(null)
 	RefreshParts()
 
-/obj/machinery/mineral/equipment_vendor/explorer/Initialize(mapload)
-	. = ..()
 	prize_list = list()
 	prize_list["Equipment"] = list(
 		EQUIPMENT("Advanced Scanner", /obj/item/t_scanner/adv_mining_scanner, 800),
@@ -399,7 +392,7 @@
 		EQUIPMENT ("Robust Treasure Satchel", /obj/item/storage/bag/expedition/robust, 300),
 		EQUIPMENT("Tracking Bio-chip Kit", /obj/item/storage/box/minertracker, 600),
 		EQUIPMENT("Telecommunications Relay Kit", /obj/item/storage/box/relay_kit, 500),
-		EQUIPMENT("Tracking Beacon", /obj/item/radio/beacon, 200),
+		EQUIPMENT("Tracking Beacon", /obj/item/beacon, 200),
 	)
 	prize_list["Modsuits"] = list(
 		EQUIPMENT("Standard MODsuit", /obj/item/mod/control/pre_equipped/standard/explorer, 1000),
@@ -410,7 +403,7 @@
 		EQUIPMENT("Mining MODsuit", /obj/item/mod/control/pre_equipped/mining/vendor, 3500),
 		EQUIPMENT("Asteroid MODsuit Skin", /obj/item/mod/skin_applier/asteroid, 1000),
 	)
-	
+
 	prize_list["Consumables"] = list(
 		EQUIPMENT("First-Aid Kit", /obj/item/storage/firstaid/regular, 400),
 		EQUIPMENT("Advanced First-Aid Kit", /obj/item/storage/firstaid/adv, 600),
@@ -418,7 +411,7 @@
 		EQUIPMENT("Point Transfer Card", /obj/item/card/mining_point_card, 500),
 		EQUIPMENT("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
 	)
-	
+
 	prize_list["Kinetic Accelerator"] = list(
 		EQUIPMENT("Kinetic Pistol", /obj/item/gun/energy/kinetic_accelerator/pistol, 750),
 		EQUIPMENT("KA Adjustable Tracer Rounds", /obj/item/borg/upgrade/modkit/tracer/adjustable, 150),
@@ -430,7 +423,7 @@
 		EQUIPMENT("KA Super Chassis", /obj/item/borg/upgrade/modkit/chassis_mod, 250),
 		EQUIPMENT("KA White Tracer Rounds", /obj/item/borg/upgrade/modkit/tracer, 100),
 	)
-	
+
 	prize_list["Miscellaneous"] = list(
 		EQUIPMENT("Alien Toy", /obj/item/clothing/mask/facehugger/toy, 300),
 		EQUIPMENT("Toy Sword", /obj/item/toy/sword, 200),

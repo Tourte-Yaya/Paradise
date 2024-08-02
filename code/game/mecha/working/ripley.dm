@@ -14,7 +14,7 @@
 	armor = list(MELEE = 40, BULLET = 20, LASER = 10, ENERGY = 20, BOMB = 40, RAD = 0, FIRE = 100, ACID = 100)
 	max_equip = 6
 	wreckage = /obj/structure/mecha_wreckage/ripley
-	var/list/cargo = new
+	var/list/cargo = list()
 	var/cargo_capacity = 15
 
 	/// How many goliath hides does the Ripley have? Does not stack with other armor
@@ -47,8 +47,17 @@
 		new /obj/item/stack/sheet/animalhide/armor_plate(get_turf(src))
 	for(var/i in 1 to drake_hides)
 		new /obj/item/stack/sheet/animalhide/ashdrake(get_turf(src))
+	for(var/mob/M in src)
+		if(M == occupant)
+			continue
+		M.loc = get_turf(src)
+		M.loc.Entered(M)
+		step_rand(M)
 	for(var/atom/movable/A in cargo)
-		A.forceMove(get_turf(src))
+		A.loc = get_turf(src)
+		var/turf/T = get_turf(A)
+		if(T)
+			T.Entered(A)
 		step_rand(A)
 	cargo.Cut()
 	return ..()
@@ -236,8 +245,6 @@
 			log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
 	return
 
-
-
 /obj/mecha/working/ripley/get_stats_part()
 	var/output = ..()
 	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
@@ -248,21 +255,6 @@
 		output += "Nothing"
 	output += "</div>"
 	return output
-
-/obj/mecha/working/ripley/Destroy()
-	for(var/mob/M in src)
-		if(M == occupant)
-			continue
-		M.loc = get_turf(src)
-		M.loc.Entered(M)
-		step_rand(M)
-	for(var/atom/movable/A in cargo)
-		A.loc = get_turf(src)
-		var/turf/T = get_turf(A)
-		if(T)
-			T.Entered(A)
-		step_rand(A)
-	return ..()
 
 /obj/mecha/working/ripley/ex_act(severity)
 	..()
